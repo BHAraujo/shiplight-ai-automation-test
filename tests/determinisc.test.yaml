@@ -1,0 +1,82 @@
+goal: Create a new user with Determinisc YAML
+base_url: https://static.shiplight.ai
+statements:
+  - URL: /testing/forms/basic-form.html
+
+  - STEP: Enter "Bruno Henrique Araujo" in the Full Name field
+    statements:
+      - intent: Click on the Full Name input field to focus it
+        action: click
+        locator: "getByRole('textbox', { name: 'Full Name *' })"
+
+      - intent: Clear any existing content in the Full Name field
+        action: clear_input
+        locator: "getByRole('textbox', { name: 'Full Name *' })"
+
+      - intent: Type 'Bruno Henrique Araujo' in the Full Name field
+        action: input_text
+        locator: "getByRole('textbox', { name: 'Full Name *' })"
+        text: Bruno Henrique Araujo
+
+  - STEP: Enter "RuadosQAs@gmail.com" in the Email Address field
+    statements:
+      - intent: Click on the Email Address input field
+        action: click
+        locator: "getByRole('textbox', { name: 'Email Address *' })"
+
+      - intent: Clear the existing content in the email field
+        action: clear_input
+        locator: "getByRole('textbox', { name: 'Email Address *' })"
+
+      - intent: Type 'Rua dos QAs' in the Email Address field
+        action: input_text
+        locator: "getByRole('textbox', { name: 'Email Address *' })"
+        text: RuadosQAs@gmail.com
+
+  - intent: Select "01/01/2024" from the Birth Date dropdown
+    action: set_date_for_native_date_picker
+    locator: "getByRole('textbox', { name: 'Birth Date *' })"
+    date: 2024-01-01
+
+  - STEP: Select "Brazil" from the Country dropdown
+    statements:
+      - intent: Click the Country dropdown button to open the country selection menu
+        action: click
+        locator: "getByRole('button', { name: 'Choose a country' })"
+
+      - intent: Click on the search field to focus it
+        action: click
+        locator: "getByRole('textbox', { name: 'Search countries...' })"
+
+      - intent: Type 'Brazil' in the search field to filter the country list
+        action: input_text
+        locator: "getByRole('textbox', { name: 'Search countries...' })"
+        text: Brazil
+
+      - intent: Click on Brazil in the dropdown list to select it
+        action: click
+        locator: getByText('🇧🇷 Brazil')
+
+  - STEP: Enter "Rua dos QAs" in the Message text area
+    statements:
+      - intent: Click on the Message text area to focus it
+        action: click
+        locator: "getByRole('textbox', { name: 'Message' })"
+
+      - intent: Type 'Rua dos QAs' into the Message text area
+        action: input_text
+        locator: "getByRole('textbox', { name: 'Message' })"
+        text: Rua dos QAs
+
+  - intent: Select "I agree to the Terms and Conditions " check button
+    action: click
+    locator: "getByRole('checkbox', { name: 'I agree to the Terms and' })"
+
+  - intent: Click "Submit Form" button
+    action: click
+    locator: "getByRole('button', { name: 'Submit Form' })"
+
+  - description:
+    js: 
+     await expect(page.locator('#form-result')).toContainText('Success!')
+

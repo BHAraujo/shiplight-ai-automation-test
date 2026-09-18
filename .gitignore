@@ -1,0 +1,5 @@
+.env
+package.json
+test-results
+shiplight-report
+node_modules

@@ -1,0 +1,36 @@
+###############################
+# Editar o arquivo index.html #
+###############################
+
+goal: Test Shiplight AI Self-Handling 
+base_url: file:///users/brunoaraujo/Documents/test/
+
+statements:
+  - URL: index.html
+
+  - intent: Preencher o campo Nome com QA Test AI
+    action: input_text
+    locator: "getByPlaceholder('Escreva seu nome aqui')"
+    text: QA Test AI
+
+  - intent: Preencher o campo E-mail com emailQATestAI@gmail.com
+    action: input_text
+    locator: "getByPlaceholder('exemplo@email.com')"
+    text: emailQATestAI@gmail.com
+
+  - intent: Preencher o campo Telefone com 11992837465
+    action: input_text
+    locator: "locator('#telefone')"
+    text: "11992837465"
+
+  - intent: Preencher o campo Endereco com Rua dos teste
+    action: input_text
+    locator: "locator('#endereco')"
+    text: Rua dos teste
+
+  - intent: Enviar o formulario de cadastro de usuario
+    action: click
+    locator: "getByRole('button', { name: 'Cadastrar Usuário' })"
+
+
+

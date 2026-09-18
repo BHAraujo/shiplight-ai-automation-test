@@ -1,0 +1,16 @@
+goal: Create a new user with Interpreted YAML
+base_url: https://static.shiplight.ai/
+statements:
+  - URL: /testing/forms/basic-form.html
+
+  - intent: Enter "Bruno Henrique Araujo" in the Full Name field
+  - intent: Enter "RuadosQAs@gmail.com" in the Email Address field
+  - intent: Select "01/01/2024" from the Birth Date dropdown
+  - intent: Select "Brazil" from the Country dropdown
+  - intent: Enter "Rua dos Test" in the Message text area
+  - intent: Select "I agree to the Terms and Conditions " check button
+  - intent: Click "Submit Form" button
+  - VERIFY: Should be displayed "Success! Form submitted successfully."
+  
+
+ 
